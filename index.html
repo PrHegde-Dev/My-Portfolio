@@ -748,46 +748,630 @@
             transform: translateY(0);
         }
 
+        /* Glassmorphism effect */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .light-mode .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animated gradient text */
+        .gradient-animate {
+            background: linear-gradient(45deg, var(--primary), var(--accent), var(--secondary), var(--primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Scroll progress bar */
+        .scroll-progress {
+            position: fixed;
+            top: 60px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 999;
+            transition: width 0.1s;
+        }
+
+        /* Stats counter section */
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            transition: all 0.3s;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        /* Floating hire me button */
+        .hire-me-btn {
+            position: fixed;
+            bottom: 5rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 998;
+            box-shadow: 0 5px 20px rgba(236, 72, 153, 0.4);
+            animation: pulse 2s infinite;
+            display: none;
+        }
+
+        .hire-me-btn.visible {
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Modal for contact form */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            background: none;
+            border: none;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 10px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Quick facts section */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .fact-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .fact-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .fact-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Cursor trail effect */
+        .cursor-trail {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary);
+            pointer-events: none;
+            z-index: 9998;
+            opacity: 0.3;
+            transition: transform 0.1s;
+        }
+
+        /* Share button */
+        .share-btn {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 1rem 0.5rem;
+            border-radius: 10px 0 0 10px;
+            cursor: pointer;
+            z-index: 997;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-weight: 600;
+        }
+
+        /* Achievement badges */
+        .achievement-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #000;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Skill filter buttons */
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Project filter tags */
+        .project-card[data-tags] {
+            transition: all 0.3s;
+        }
+
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(99, 102, 241, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Confetti animation */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: var(--primary);
+            position: absolute;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* QR Code section */
+        .qr-section {
+            text-align: center;
+            padding: 2rem;
+            background: var(--card-bg);
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        /* Tooltip */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 120px;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -60px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Easter egg */
+        .easter-egg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5rem;
+            z-index: 10000;
+            animation: easterEggBounce 1s ease;
+            display: none;
+        }
+
+        .easter-egg.active {
+            display: block;
+        }
+
+        @keyframes easterEggBounce {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.5); }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .nav-container {
+                padding: 0 1rem;
             }
 
-            .hero .typing-text {
+            .logo {
                 font-size: 1.2rem;
             }
 
             nav ul {
-                gap: 1rem;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
-            .timeline::before {
-                left: 0;
+            nav ul li:last-child {
+                margin-left: auto;
             }
 
-            .timeline-content {
-                width: calc(100% - 40px);
-                margin-left: 40px !important;
+            .theme-toggle {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
             }
 
-            .timeline-dot {
-                left: 0;
+            .hero {
+                padding: 1rem;
+                min-height: 90vh;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero .typing-text {
+                font-size: 1rem;
+            }
+
+            .cursor {
+                height: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+                gap: 0.75rem;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.95rem;
+            }
+
+            .social-links {
+                gap: 0.75rem;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .social-icon svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .container {
+                padding: 2rem 1rem;
             }
 
             .section-title {
+                font-size: 1.75rem;
+            }
+
+            .about-content {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid,
+            .cert-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .skill-card,
+            .project-card,
+            .cert-card,
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .skill-badge {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .project-card h3,
+            .skill-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+                padding: 1.5rem;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                width: 16px;
+                height: 16px;
+            }
+
+            .cert-image-container {
+                height: 180px;
+            }
+
+            .contact-icon {
+                font-size: 2.5rem;
+            }
+
+            .contact-icon svg {
+                width: 40px;
+                height: 40px;
+            }
+
+            .scroll-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .github-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .stat-card {
+                padding: 1rem;
+            }
+
+            .stat-icon {
                 font-size: 2rem;
             }
 
-            .projects-grid,
-            .skills-grid,
-            .cert-grid {
-                grid-template-columns: 1fr;
+            .stat-value {
+                font-size: 1.1rem;
+            }
+
+            .particle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                font-size: 0.75rem;
+                gap: 0.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero .typing-text {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .about-content {
+                padding: 1rem;
+            }
+
+            .skill-card,
+            .project-card,
+            .cert-card,
+            .contact-card {
+                padding: 1rem;
+            }
+
+            .btn {
+                padding: 0.65rem 1.25rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Fix for navbar overflow on small screens */
+        @media (max-width: 600px) {
+            nav ul {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+            }
+
+            nav ul::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:active {
+                transform: scale(0.95);
+            }
+
+            .social-icon:active,
+            .contact-card:active,
+            .cert-card:active {
+                transform: scale(0.95);
+            }
+
+            .skill-badge:active {
+                transform: scale(0.95);
             }
         }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Share Button -->
+    <div class="share-btn" id="shareBtn">SHARE</div>
+
+    <!-- Hire Me Button -->
+    <button class="hire-me-btn" id="hireMeBtn">💼 Hire Me!</button>
+
+    <!-- Easter Egg -->
+    <div class="easter-egg" id="easterEgg">🎉</div>
+
     <nav>
         <div class="nav-container">
             <div class="logo">PH</div>
@@ -807,7 +1391,7 @@
     <section class="hero" id="home">
         <div class="particles" id="particles"></div>
         <div class="hero-content">
-            <h1>PRATHAM PRASHANT HEGDE</h1>
+            <h1 class="gradient-animate">PRATHAM PRASHANT HEGDE</h1>
             <div class="typing-text">
                 <span id="typedText"></span><span class="cursor"></span>
             </div>
@@ -836,7 +1420,28 @@
     <section class="about" id="about">
         <div class="container">
             <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content fade-in">
+            
+            <!-- Stats Counter -->
+            <div class="stats-section fade-in">
+                <div class="stat-box">
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-text">Major Projects</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-text">Certifications</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-text">Technologies</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-text">Commits</div>
+                </div>
+            </div>
+
+            <div class="about-content fade-in glass-card">
                 <p>
                     Hello! I'm <strong>Pratham Prashant Hegde</strong>, a highly motivated <strong>Aspiring Data Analyst</strong> 
                     with a passion for transforming complex data into actionable business insights.
@@ -851,6 +1456,30 @@
                     Currently pursuing my B.E. in Computer Science with specializations in IoT, Cybersecurity, and Blockchain, 
                     I bring a unique blend of analytical thinking, technical expertise, and creative problem-solving to every project.
                 </p>
+            </div>
+
+            <!-- Quick Facts -->
+            <div class="quick-facts fade-in">
+                <div class="fact-card">
+                    <div class="fact-icon">🎯</div>
+                    <div class="fact-title">Current Focus</div>
+                    <p>AI & Machine Learning with Data Analytics</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">⚡</div>
+                    <div class="fact-title">Superpower</div>
+                    <p>Turning complex data into actionable insights</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">🚀</div>
+                    <div class="fact-title">Goal</div>
+                    <p>Build AI-driven solutions for real-world problems</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-icon">💡</div>
+                    <div class="fact-title">Fun Fact</div>
+                    <p>I can debug code faster than I can tie my shoes!</p>
+                </div>
             </div>
         </div>
     </section>
@@ -905,9 +1534,18 @@
         <div class="container">
             <h2 class="section-title fade-in">Featured Projects</h2>
             
+            <!-- Filter Buttons -->
+            <div class="filter-buttons fade-in">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="python">Python</button>
+                <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+                <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
+                <button class="filter-btn" data-filter="sql">SQL</button>
+            </div>
+
             <h3 style="color: var(--primary); margin-bottom: 1.5rem; margin-top: 2rem; font-size: 1.8rem;">🎯 Team Projects</h3>
             <div class="projects-grid">
-                <div class="project-card fade-in">
+                <div class="project-card fade-in" data-tags="cybersecurity,os">
                     <div class="project-content">
                         <span class="project-badge">BE - Ongoing</span>
                         <h3>Blue Team OS</h3>
@@ -923,7 +1561,7 @@
                     </div>
                 </div>
 
-                <div class="project-card fade-in">
+                <div class="project-card fade-in" data-tags="blockchain,fintech">
                     <div class="project-content">
                         <span class="project-badge">TE - Published</span>
                         <h3>Crypto Wallet</h3>
@@ -941,9 +1579,7 @@
                     </div>
                 </div>
 
-                <div class="project-card fade-in">
-                    <div class="project-content">
-                        <span class="project-badge">SE - Completed</span>
+                <div class="project-card fade-in" data-tags="python,sql,data">
                         <h3>Stock Management System</h3>
                         <p>
                             Built a robust digital system using SQL and Python to efficiently track and manage inventory. 
@@ -1165,7 +1801,215 @@
 
     <button class="scroll-top" id="scrollTop">↑</button>
 
+    <!-- Contact Modal -->
+    <div class="modal" id="contactModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 style="color: var(--primary); margin-bottom: 2rem;">Let's Work Together!</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Your Email</label>
+                    <input type="email" required placeholder="john@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Project Details</label>
+                    <textarea required placeholder="Tell me about your project..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgress.style.width = scrollPercent + '%';
+        });
+
+        // Stats Counter Animation
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 16);
+        }
+
+        // Trigger counter animation when stats section is visible
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const statNumbers = entry.target.querySelectorAll('.stat-number');
+                    statNumbers.forEach(stat => animateCounter(stat));
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const statsSection = document.querySelector('.stats-section');
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+        // Hire Me Button
+        const hireMeBtn = document.getElementById('hireMeBtn');
+        const contactModal = document.getElementById('contactModal');
+        const modalClose = document.getElementById('modalClose');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                hireMeBtn.classList.add('visible');
+            } else {
+                hireMeBtn.classList.remove('visible');
+            }
+        });
+
+        hireMeBtn.addEventListener('click', () => {
+            contactModal.classList.add('active');
+        });
+
+        modalClose.addEventListener('click', () => {
+            contactModal.classList.remove('active');
+        });
+
+        contactModal.addEventListener('click', (e) => {
+            if (e.target === contactModal) {
+                contactModal.classList.remove('active');
+            }
+        });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon. 😊');
+            contactModal.classList.remove('active');
+            e.target.reset();
+        });
+
+        // Share Button
+        document.getElementById('shareBtn').addEventListener('click', () => {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Pratham Hegde - Portfolio',
+                    text: 'Check out my portfolio!',
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback: Copy to clipboard
+                navigator.clipboard.writeText(window.location.href);
+                alert('Portfolio link copied to clipboard!');
+            }
+        });
+
+        // Project Filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    if (filter === 'all') {
+                        card.classList.remove('hidden');
+                    } else {
+                        const tags = card.getAttribute('data-tags');
+                        if (tags && tags.includes(filter)) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+        });
+
+        // Confetti Animation on Certifications Section
+        function createConfetti() {
+            const colors = ['#6366f1', '#8b5cf6', '#ec4899', '#f59e0b'];
+            const confettiCount = 50;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 2 + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => confetti.remove(), 3000);
+            }
+        }
+
+        const certSection = document.getElementById('certifications');
+        let confettiTriggered = false;
+        const certObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !confettiTriggered) {
+                    createConfetti();
+                    confettiTriggered = true;
+                }
+            });
+        }, { threshold: 0.3 });
+
+        if (certSection) {
+            certObserver.observe(certSection);
+        }
+
+        // Easter Egg - Click logo 5 times
+        let logoClickCount = 0;
+        const logo = document.querySelector('.logo');
+        const easterEgg = document.getElementById('easterEgg');
+
+        logo.addEventListener('click', () => {
+            logoClickCount++;
+            if (logoClickCount === 5) {
+                easterEgg.classList.add('active');
+                createConfetti();
+                setTimeout(() => {
+                    easterEgg.classList.remove('active');
+                    logoClickCount = 0;
+                }, 2000);
+            }
+        });
+
+        // Cursor Trail Effect (Desktop only)
+        if (window.innerWidth > 768) {
+            document.addEventListener('mousemove', (e) => {
+                const trail = document.createElement('div');
+                trail.className = 'cursor-trail';
+                trail.style.left = e.pageX + 'px';
+                trail.style.top = e.pageY + 'px';
+                document.body.appendChild(trail);
+
+                setTimeout(() => {
+                    trail.style.transform = 'scale(0)';
+                    setTimeout(() => trail.remove(), 300);
+                }, 100);
+            });
+        }
+
         // Download Resume Function
         document.getElementById('downloadResume').addEventListener('click', function() {
             // Open Google Drive PDF in new tab for download
